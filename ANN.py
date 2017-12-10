@@ -5,10 +5,9 @@ class NonMatchingLayersAndNodeNumbers(Exception):
 
 class artificialNeuralNetwork:
     # define numberOfNodesInLayers as a n-tuple of natural numbers where n == numberOfLayers
-    def __init__(self, numberOfLayers, numberOfNodesInLayers, numberOfTrainingIterations, learningRate):
+    def __init__(self, numberOfLayers, numberOfNodesInLayers, learningRate):
         if numberOfLayers != len(numberOfNodesInLayers):
             raise NonMatchingLayersAndNodeNumbers('[numberOfLayers: %d, numberOfNodesInLayers: %d]' % (numberOfLayers, len(numberOfNodesInLayers)))
-        self.numberOfTrainingIterations = numberOfTrainingIterations
         self.learningRate = learningRate
         self.weightMatrices = []
         for i in range(numberOfLayers-1):
@@ -70,7 +69,7 @@ class artificialNeuralNetwork:
         return 1 / (1 + numpy.exp(-x))
 
 
-ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), numberOfTrainingIterations=100, learningRate=1)
+ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.5)
 ann.train()
 
 pass
