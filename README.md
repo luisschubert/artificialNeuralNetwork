@@ -123,3 +123,9 @@ failureRate: 6.290 %
 successRate: 90.180 %
 failureRate: 9.820 %
 ```
+
+### sample 8
+```
+successRate: 94.510 %
+failureRate: 5.490 %
+```
