@@ -116,3 +116,10 @@ failureRate: 5.890 %
 successRate: 93.710 %
 failureRate: 6.290 %
 ```
+
+### sample 7
+> Learning Rate: 0.6
+```
+successRate: 90.180 %
+failureRate: 9.820 %
+```
