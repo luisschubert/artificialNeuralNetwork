@@ -6,6 +6,7 @@
 - [ ] gradient descent formula
 - [ ] make more generic for n-hidden layers architecture
 - [ ] show graphic to illustrate architecture
+- [ ] show neural network vision visualization
 
 
 
