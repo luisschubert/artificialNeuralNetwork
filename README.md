@@ -74,3 +74,10 @@ I think I'm seeing a 6
 successRate: 91.160 %
 failureRate: 8.840 %
 ```
+
+### sample 2
+> Learning Rate: 0.25
+```
+successRate: 94.010 %
+failureRate: 5.990 %
+```
