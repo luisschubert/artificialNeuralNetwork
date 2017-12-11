@@ -1,5 +1,12 @@
 # artificialNeuralNetwork
 
+### Todo:
+- [ ] add introduction
+- [ ] add sources
+- [ ] gradient descent formula
+- [ ] make more generic for n-hidden layers architecture
+- [ ] show graphic to illustrate architecture
+
 
 
 ### Sample output:
