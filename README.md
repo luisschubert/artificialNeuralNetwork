@@ -10,7 +10,7 @@
 
 
 ### Sample output:
->Learning Rate: 1.0<br>
+>Learning Rate: 0.5<br>
 Training Data: 60000 images<br>
 Query Data: 10000 images<br>
 Batches: 1<br>
