@@ -4,7 +4,7 @@
 Implemented a Deep Neural Network for image classification.<br>
 Images representing handwritten digits from 0 - 9.<br>
 Network is trained using 60,000 images.<br>
-Network performance is tested using 10,000 images.<br>
+Network classification performance is tested using 10,000 images.<br>
 
 ### Todo:
 - [ ] add introduction
