@@ -88,3 +88,10 @@ failureRate: 5.990 %
 successRate: 94.380 %
 failureRate: 5.620 %
 ```
+
+### sample 4
+> Learning Rate: 0.1
+```
+successRate: 94.620 %
+failureRate: 5.380 %
+```
