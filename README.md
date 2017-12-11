@@ -2,12 +2,12 @@
 
 
 
-### Sample output
-Learning Rate: 1.0
-Training Data: 60000 images
-Batches: 1
-Activation Function: Sigmoid
-Layers: (784, 100, 10)
+### Sample output:
+>Learning Rate: 1.0<br>
+Training Data: 60000 images<br>
+Batches: 1<br>
+Activation Function: Sigmoid<br>
+Layers: (784, 100, 10)<br>
 ```
 I should be seeing a 9
 I think I'm seeing a 9
