@@ -5,6 +5,7 @@
 ### Sample output:
 >Learning Rate: 1.0<br>
 Training Data: 60000 images<br>
+Query Data: 10000 images<br>
 Batches: 1<br>
 Activation Function: Sigmoid<br>
 Layers: (784, 100, 10)<br>
@@ -63,6 +64,6 @@ I think I'm seeing a 6
    3.41236801e-03   6.38016004e-04]
 ------------------------
 
-successRate: 91.160
-failureRate: 8.840
+successRate: 91.160 %
+failureRate: 8.840 %
 ```
