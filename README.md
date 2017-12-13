@@ -166,5 +166,47 @@ successRate: 94.560 %
 failureRate: 5.440 %
 ```
 
+## New Approach
+Rotate the training images by 15° and -15° to triple the size of the train data.<br>
 
+### sample 13
+> Learning Rate: 0.125
+```
+successRate: 94.940 %
+failureRate: 5.060 %
+```
 
+### sample 14
+> Learning Rate: 0.15
+```
+successRate: 94.940 %
+failureRate: 5.060 %
+```
+
+### sample 15
+> Learning Rate: 0.05
+```
+successRate: 95.410 %
+failureRate: 4.590 %
+```
+
+### sample 16
+> Learning Rate: 0.03
+```
+successRate: 94.960 %
+failureRate: 5.040 %
+```
+
+### sample 17
+> Learning Rate: 0.04
+```
+successRate: 94.860 %
+failureRate: 5.140 %
+```
+
+### sample 18
+> Learning Rate: 0.055
+```
+successRate: 95.060 %
+failureRate: 4.940 %
+```
