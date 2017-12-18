@@ -19,7 +19,7 @@ class artificialNeuralNetwork:
 
     def train(self):
         # https://www.pjreddie.com/media/files/mnist_train.csv 
-        mnist = file("/Users/luisschubert/Downloads/mnist_train.csv")
+        mnist = file("/PATH/TO/mnist_train.csv")
         imageCount = 0
         for line in iter(mnist):
             pixels = line.split(",")
@@ -38,7 +38,7 @@ class artificialNeuralNetwork:
 
     def query(self):
         # https://www.pjreddie.com/media/files/mnist_test.csv
-        mnistTest = file("/Users/luisschubert/Downloads/mnist_test.csv")
+        mnistTest = file("/PATH/TO/mnist_test.csv")
         imageCount = 0
         correct = 0
         incorrect = 0
