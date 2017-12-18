@@ -6,17 +6,8 @@ Images representing handwritten digits from 0 - 9.<br>
 Network is trained using 60,000 images.<br>
 Network classification performance is tested using 10,000 images.<br>
 
-### Todo:
-- [ ] add introduction
-- [ ] add sources
-- [ ] gradient descent formula
-- [ ] make more generic for n-hidden layers architecture
-- [ ] show graphic to illustrate architecture
-- [ ] show neural network vision visualization
 
-
-
-### Tuning the Learning Rate:
+## Tuning the Learning Rate:
 >Training Data: 60000 images<br>
 Query Data: 10000 images<br>
 Activation Function: Sigmoid<br>
