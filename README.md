@@ -77,136 +77,31 @@ I think I'm seeing a 6
    6.92084738e-03   5.79356388e-03   9.89072965e-01   7.77001200e-04
    3.41236801e-03   6.38016004e-04]
 ------------------------
-
-successRate: 91.160 %
-failureRate: 8.840 %
 ```
-
-### sample 2
-> Learning Rate: 0.25
-```
-successRate: 94.010 %
-failureRate: 5.990 %
-```
-
-### sample 3
-> Learning Rate: 0.2
-```
-successRate: 94.380 %
-failureRate: 5.620 %
-```
-
-### sample 4
-> Learning Rate: 0.1
-```
-successRate: 94.620 %
-failureRate: 5.380 %
-```
-
-### sample 5
-> Learning Rate: 0.05
-```
-successRate: 94.110 %
-failureRate: 5.890 %
-```
-
-### sample 6
-> Learning Rate: 0.3
-```
-successRate: 93.710 %
-failureRate: 6.290 %
-```
-
-### sample 7
-> Learning Rate: 0.6
-```
-successRate: 90.180 %
-failureRate: 9.820 %
-```
-
-### sample 8
-> Learning Rate: 0.08
-```
-successRate: 94.510 %
-failureRate: 5.490 %
-```
-
-### sample 9
-> Learning Rate: 0.15
-```
-successRate: 94.590 %
-failureRate: 5.410 %
-```
-
-### sample 10
-> Learning Rate: 0.125
-```
-successRate: 95.020 %
-failureRate: 4.980 %
-```
-
-### sample 10
-> Learning Rate: 0.13 
-```
-successRate: 94.570 %
-failureRate: 5.430 %
-```
-
-### sample 11
-> Learning Rate: 0.11
-```
-successRate: 94.210 %
-failureRate: 5.790 %
-```
-
-### sample 12
-> Learning Rate: 0.12
-```
-successRate: 94.560 %
-failureRate: 5.440 %
-```
+Sample Number | Learning Rate | Success Rate | Failure Rate
+:--------------:|---------------|--------------|--------------
+1 | 0.5 | 91.160 % | 8.840 %
+2 | 0.25 | 94.010 % | 5.990 %
+3 | 0.2 | 94.380 %| 5.620 %
+4 | 0.1 | 94.620 % | 5.380 %
+5 | 0.05 | 94.110 % | 5.890 % 
+6 | 0.3 | 93.710 % | 6.290 %
+7 | 0.6 | 90.180 % | 9.820 %
+8 | 0.08 | 94.510 % | 5.490 %
+9 | 0.15 | 94.590 % | 5.410 % 
+10 | 0.125 | 95.020 % | 4.980 % 
+11 | 0.13 | 94.570 % | 5.430 %
+12 | 0.11 | 94.210 % | 5.790 %
+13 | 0.12 | 94.560 % | 5.440 % 
 
 ## New Approach
 Rotate the training images by 15° and -15° to triple the size of the train data.<br>
 
-### sample 13
-> Learning Rate: 0.125
-```
-successRate: 94.940 %
-failureRate: 5.060 %
-```
-
-### sample 14
-> Learning Rate: 0.15
-```
-successRate: 94.940 %
-failureRate: 5.060 %
-```
-
-### sample 15
-> Learning Rate: 0.05
-```
-successRate: 95.410 %
-failureRate: 4.590 %
-```
-
-### sample 16
-> Learning Rate: 0.03
-```
-successRate: 94.960 %
-failureRate: 5.040 %
-```
-
-### sample 17
-> Learning Rate: 0.04
-```
-successRate: 94.860 %
-failureRate: 5.140 %
-```
-
-### sample 18
-> Learning Rate: 0.055
-```
-successRate: 95.060 %
-failureRate: 4.940 %
-```
+Sample Number | Learning Rate | Success Rate | Failure Rate
+:--------------:|---------------|--------------|--------------
+1 | 0.125 | 94.940 % | 5.060 %
+2 | 0.15 | 94.940 % | 5.060 %
+3 | 0.05 | 95.410 % | 4.590 %
+4 | 0.03 | 94.960 % | 5.040 %
+5 | 0.04 | 94.860 % | 5.140 % 
+6 | 0.055 | 95.060 % | 4.940 %
