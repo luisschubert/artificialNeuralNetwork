@@ -1,6 +1,7 @@
 # coding=utf-8
 import numpy
 from math import sqrt
+import time
 class NonMatchingLayersAndNodeNumbers(Exception):
     pass
 
@@ -17,28 +18,38 @@ class artificialNeuralNetwork:
             self.weightMatrices.append(m)
         pass
 
-    def train(self):
-        # https://www.pjreddie.com/media/files/mnist_train.csv 
-        mnist = file("/PATH/TO/mnist_train.csv")
-        imageCount = 0
-        for line in iter(mnist):
-            pixels = line.split(",")
-            digit = int(pixels.pop(0))
-            inputVector = numpy.array(map(float,pixels))
-            # scale the input vector to be values between (0,1]
-            inputVector = inputVector / 255 * 0.99 + 0.01
-            layers = self.forwardPropagate(inputVector)
-            self.backwardPropagate(digit, layers)
-            imageCount = imageCount + 1
-            if imageCount % 1000 == 0:
-                print('Number of digits seen: %s' % str(imageCount))
-        mnist.close()
+    def train(self, epoch=1):
+        # https://www.pjreddie.com/media/files/mnist_train.csv
+        timeElapsed = 0
+        for epochNumber in range(epoch):
+            start  = time.time()
+            print "epoch number: %d" % (epochNumber + 1)
+            mnist = file("/Users/Student/Desktop/mnist_train.csv")
+            imageCount = 0
+            for line in iter(mnist):
+                pixels = line.split(",")
+                digit = int(pixels.pop(0))
+                inputVector = numpy.array(map(float,pixels))
+                # scale the input vector to be values between (0,1]
+                inputVector = inputVector / 255 * 0.99 + 0.01
+                layers = self.forwardPropagate(inputVector)
+                self.backwardPropagate(digit, layers)
+                imageCount = imageCount + 1
+                if imageCount % 1000 == 0:
+                    print('Number of digits seen: %s' % str(imageCount))
+            mnist.close()
+            end = time.time()
+            iterationTime = end - start
+            timeElapsed = timeElapsed + iterationTime
+            print "iteration Time %s" % str(iterationTime)
+            print "elapsed time %s" % str(timeElapsed)
         pass
+
 
 
     def query(self):
         # https://www.pjreddie.com/media/files/mnist_test.csv
-        mnistTest = file("/PATH/TO/mnist_test.csv")
+        mnistTest = file("/Users/Student/Desktop/mnist_test.csv")
         imageCount = 0
         correct = 0
         incorrect = 0
@@ -169,6 +180,6 @@ class artificialNeuralNetwork:
 
 
 
-ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.5)
-ann.train()
+ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.32)
+ann.train(10)
 ann.query()
