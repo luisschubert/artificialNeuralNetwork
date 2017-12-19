@@ -63,5 +63,22 @@ Sample Number | Learning Rate | Success Rate | Failure Rate
 3 | 0.15 | 96.440 % | 3.560 %
 4 | 0.2 | 96.860 % | 3.140 %
 5 | 0.3 | 97.060 % | 2.940 %
+6 | 0.4 | 97.260 % | 2.740 %
+7 | 0.5 | 91.590 % | 8.410 % // THIS IS WEIRD
+8 | 0.5 | 92.310 % | 7.690 % // What is going on here ???
+9 | 0.5 | 93.090 % | 6.910 %
+10 | 0.35 | 93.390 % | 6.610 %
+11 | 0.3 | 94.720 % | 5.280 %
+12 | 0.25 | 95.580 % | 4.420 % 
+13 | 0.3 | 94.070 % | 5.930 %
+13 | 0.28 | 95.150 % | 4.850 %
+14 | 0.32 | 93.860 % | 6.140 %
 
+
+The classification scores of networks with identical learning rates varied.
+The only other thing that changes are how the weight matrices are initialized.
+
+Next I should attempt to control the creation of the weight matrices and experiment with what works better.
+
+There needs to be a better way to test these networks with multiple different paramters at once and find ones that seem to work better.
 
