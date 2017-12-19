@@ -74,6 +74,7 @@ Sample Number | Learning Rate | Success Rate | Failure Rate
 13 | 0.28 | 95.150 % | 4.850 %
 14 | 0.32 | 93.860 % | 6.140 %
 
+## Discussion
 
 The classification scores of networks with identical learning rates varied.
 The only other thing that changes are how the weight matrices are initialized.
@@ -81,4 +82,10 @@ The only other thing that changes are how the weight matrices are initialized.
 Next I should attempt to control the creation of the weight matrices and experiment with what works better.
 
 There needs to be a better way to test these networks with multiple different paramters at once and find ones that seem to work better.
+
+
+## Future Work
+- [ ] visualize the weights with a bokeh heatmap
+- [ ] implement an alternative train and query method of CIFAR 
+
 
