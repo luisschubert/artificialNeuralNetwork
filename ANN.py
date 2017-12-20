@@ -1,4 +1,6 @@
 # coding=utf-8
+
+
 import numpy
 from math import sqrt
 import time
@@ -14,11 +16,11 @@ class artificialNeuralNetwork:
         self.weightMatrices = []
         for i in range(numberOfLayers-1):
             m = numpy.zeros((numberOfNodesInLayers[i+1], numberOfNodesInLayers[i]))
-            m = self.initializeMatrix(m, numberOfNodesInLayers[i])
+            m = self.initializeMatrixForReLUNeurons(m, numberOfNodesInLayers[i])
             self.weightMatrices.append(m)
         pass
 
-    def train(self, epoch=1):
+    def MNISTtrain(self, epoch=1):
         # https://www.pjreddie.com/media/files/mnist_train.csv
         timeElapsed = 0
         for epochNumber in range(epoch):
@@ -34,8 +36,8 @@ class artificialNeuralNetwork:
                     inputVector = numpy.array(pixels).astype(numpy.float)
                     # scale the input vector to be values between (0,1]
                     inputVector = inputVector / 255 * 0.99 + 0.01
-                    layers = self.forwardPropagate(inputVector)
-                    self.backwardPropagate(digit, layers)
+                    layers = self.threeLayerForwardPropagate(inputVector)
+                    self.threeLayerBackwardPropagate(digit, layers)
                     imageCount = imageCount + 1
                     if imageCount % 1000 == 0:
                         print('Number of digits seen: %s' % str(imageCount))
@@ -49,7 +51,7 @@ class artificialNeuralNetwork:
 
 
 
-    def query(self):
+    def MNISTquery(self):
         # https://www.pjreddie.com/media/files/mnist_test.csv
         with open("/Users/Student/Desktop/mnist_test.csv", "r") as mnistTest:
             imageCount = 0
@@ -71,7 +73,7 @@ class artificialNeuralNetwork:
                 '''
                 Feed the Network
                 '''
-                layers = self.forwardPropagate(inputVector)
+                layers = self.threeLayerForwardPropagate(inputVector)
 
 
                 '''
@@ -108,7 +110,10 @@ class artificialNeuralNetwork:
     '''
     HELPER FUNCTIONS 
     '''
-    def forwardPropagate(self, inputVector):
+
+    # This is currently hardcoded for just 1 hidden layer.
+    # Todo: Fix this and implement the general case of N-Hidden Layers
+    def threeLayerForwardPropagate(self, inputVector):
         layers = {}
         layers['inputNodes'] = inputVector
 
@@ -128,7 +133,10 @@ class artificialNeuralNetwork:
         # return the layers
         return layers
 
-    def backwardPropagate(self, digit, layers):
+
+    # This is currently hardcoded for just 1 hidden layer.
+    # Todo: Fix this and implement the general case of N-Hidden Layers
+    def threeLayerBackwardPropagate(self, digit, layers):
         expectedVector = numpy.zeros((10))
         expectedVector[digit] = 1
         expectedVector = expectedVector * 0.99 + 0.01
@@ -176,13 +184,7 @@ class artificialNeuralNetwork:
     def calculateError(self, resultantVector, expectedVector):
         return (expectedVector - resultantVector)
 
-    def initializeMatrix(self, m, numOfNodes):
+    def initializeMatrixForReLUNeurons(self, m, numOfNodes):
         for row in range(len(m)):
             m[row] = numpy.random.randn(numOfNodes) * sqrt(2.0/numOfNodes)
         return m
-
-
-
-ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.3)
-ann.train(2)
-ann.query()
