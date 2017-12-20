@@ -56,7 +56,7 @@ Best Learning Rate | Success Rate | Failure Rate
 
 ## Training with multiple Epochs
 
-Sample Number | Epochs |Learning Rate | Success Rate | Failure Rate
+Sample Number | Learning Rate | Epochs | Success Rate | Failure Rate
 :------------:|--------|--------------|--------------|--------------
 1 | 0.5 | 10 | 93.280 % | 6.720 %
 2 | 0.1 | 10 | 96.030 % | 3.970 %
