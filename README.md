@@ -77,6 +77,7 @@ Sample Number | Learning Rate | Epochs | Success Rate | Failure Rate
 16 | 0.3 | 2 | 94.040 % | 5.960 %
 17 | 0.3 | 2 | 94.440 % | 5.560 %
 18 | 0.3 | 2 | 94.520 % | 5.480 %
+19 | 0.001 | 10 | 92.030 % | 7.970
 
 ## Discussion
 
