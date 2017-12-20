@@ -18,9 +18,8 @@ def numpyToCSString(arr):
 
 with open('/PATH/TO/mnist_train.csv', "r") as inFile,\
         open('/PATH/TO/mnist_trainRotated.csv', "w") as outFile:
-    line = inFile.readline()
     imageRead = 1
-    while line is not "":
+    for line in inFile:
         imagePixelData = line.split(',')
         digit = int(imagePixelData.pop(0))
         pixelValues = numpy.array(imagePixelData).astype(numpy.uint8)
@@ -41,7 +40,6 @@ with open('/PATH/TO/mnist_train.csv', "r") as inFile,\
         toLeftValues = numpy.insert(toLeftValues, 0, digit)
 
 
-        line = inFile.readline()
         outFile.write(numpyToCSString(toRightValues))
         outFile.write(numpyToCSString(toLeftValues))
         print(imageRead)
