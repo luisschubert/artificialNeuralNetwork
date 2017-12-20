@@ -23,83 +23,86 @@ class artificialNeuralNetwork:
         timeElapsed = 0
         for epochNumber in range(epoch):
             start  = time.time()
-            print "epoch number: %d" % (epochNumber + 1)
-            mnist = file("/Users/Student/Desktop/mnist_train.csv")
-            imageCount = 0
-            for line in iter(mnist):
-                pixels = line.split(",")
-                digit = int(pixels.pop(0))
-                inputVector = numpy.array(map(float,pixels))
-                # scale the input vector to be values between (0,1]
-                inputVector = inputVector / 255 * 0.99 + 0.01
-                layers = self.forwardPropagate(inputVector)
-                self.backwardPropagate(digit, layers)
-                imageCount = imageCount + 1
-                if imageCount % 1000 == 0:
-                    print('Number of digits seen: %s' % str(imageCount))
-            mnist.close()
-            end = time.time()
-            iterationTime = end - start
-            timeElapsed = timeElapsed + iterationTime
-            print "iteration Time %s" % str(iterationTime)
-            print "elapsed time %s" % str(timeElapsed)
+            print ("epoch number: %d" % (epochNumber + 1))
+            with open("/Users/Student/Desktop/mnist_train.csv", "r") as mnist:
+                imageCount = 0
+                for line in mnist:
+                    pixels = line.split(",")
+                    digit = int(pixels.pop(0))
+                    #inputVector = numpy.array(map(float,pixels))
+                    # Use this for python 3.7
+                    inputVector = numpy.array(pixels).astype(numpy.float)
+                    # scale the input vector to be values between (0,1]
+                    inputVector = inputVector / 255 * 0.99 + 0.01
+                    layers = self.forwardPropagate(inputVector)
+                    self.backwardPropagate(digit, layers)
+                    imageCount = imageCount + 1
+                    if imageCount % 1000 == 0:
+                        print('Number of digits seen: %s' % str(imageCount))
+                mnist.close()
+                end = time.time()
+                iterationTime = end - start
+                timeElapsed = timeElapsed + iterationTime
+                print ("iteration Time %s" % str(iterationTime))
+                print ("elapsed time %s" % str(timeElapsed))
         pass
 
 
 
     def query(self):
         # https://www.pjreddie.com/media/files/mnist_test.csv
-        mnistTest = file("/Users/Student/Desktop/mnist_test.csv")
-        imageCount = 0
-        correct = 0
-        incorrect = 0
-        
-        for line in iter(mnistTest):
-            '''
-            Prepare Input
-            '''
-            pixels = line.split(",")
-            digit = int(pixels.pop(0))
-            inputVector = numpy.array(map(float, pixels))
-            # scale the input vector to be values between (0,1]
-            inputVector = inputVector / 255 * 0.99 + 0.01
+        with open("/Users/Student/Desktop/mnist_test.csv", "r") as mnistTest:
+            imageCount = 0
+            correct = 0
+            incorrect = 0
 
-            
-            '''
-            Feed the Network
-            '''
-            layers = self.forwardPropagate(inputVector)
-
-            
-            '''
-            Interpret Output
-            '''
-            recognizedDigit = numpy.argmax(layers['sigOutputNodes'])
-
-            
-            '''
-            Error Calculation
-            '''
-            if recognizedDigit == digit:
-                correct = correct + 1
-            else:
-                incorrect = incorrect + 1
+            for line in mnistTest:
                 '''
-                Error Reporting
+                Prepare Input
                 '''
-                print("I should be seeing a %s"% str(digit))
-                print("I think I'm seeing a %s" % str(recognizedDigit))
-                print(layers['sigOutputNodes'])
-                print("------------------------\n")
-            imageCount = imageCount + 1
+                pixels = line.split(",")
+                digit = int(pixels.pop(0))
+                #inputVector = numpy.array(map(float, pixels))
+                inputVector = numpy.array(pixels).astype(numpy.float)
+                # scale the input vector to be values between (0,1]
+                inputVector = inputVector / 255 * 0.99 + 0.01
 
-        '''
-        Diagnostics:
-        '''
-        print('successRate: %.3f' % ((float(correct)/float(imageCount))*100) )
-        print('failureRate: %.3f' % ((float(incorrect)/float(imageCount))*100) )
-        mnistTest.close()
-        pass
+
+                '''
+                Feed the Network
+                '''
+                layers = self.forwardPropagate(inputVector)
+
+
+                '''
+                Interpret Output
+                '''
+                recognizedDigit = numpy.argmax(layers['sigOutputNodes'])
+
+
+                '''
+                Error Calculation
+                '''
+                if recognizedDigit == digit:
+                    correct = correct + 1
+                else:
+                    incorrect = incorrect + 1
+                    '''
+                    Error Reporting
+                    '''
+                    print("I should be seeing a %s"% str(digit))
+                    print("I think I'm seeing a %s" % str(recognizedDigit))
+                    print(layers['sigOutputNodes'])
+                    print("------------------------\n")
+                imageCount = imageCount + 1
+
+            '''
+            Diagnostics:
+            '''
+            print('successRate: %.3f' % ((float(correct)/float(imageCount))*100) )
+            print('failureRate: %.3f' % ((float(incorrect)/float(imageCount))*100) )
+            mnistTest.close()
+            pass
 
 
     '''
@@ -180,6 +183,6 @@ class artificialNeuralNetwork:
 
 
 
-ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.32)
-ann.train(10)
+ann = artificialNeuralNetwork(numberOfLayers=3, numberOfNodesInLayers=(784,100,10), learningRate=0.3)
+ann.train(2)
 ann.query()
