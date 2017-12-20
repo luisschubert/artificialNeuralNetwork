@@ -26,7 +26,7 @@ class artificialNeuralNetwork:
         for epochNumber in range(epoch):
             start  = time.time()
             print ("epoch number: %d" % (epochNumber + 1))
-            with open("/Users/Student/Desktop/mnist_train.csv", "r") as mnist:
+            with open("/PATH/TO/mnist_train.csv", "r") as mnist:
                 imageCount = 0
                 for line in mnist:
                     pixels = line.split(",")
@@ -53,7 +53,7 @@ class artificialNeuralNetwork:
 
     def MNISTquery(self):
         # https://www.pjreddie.com/media/files/mnist_test.csv
-        with open("/Users/Student/Desktop/mnist_test.csv", "r") as mnistTest:
+        with open("/PATH/TO/mnist_test.csv", "r") as mnistTest:
             imageCount = 0
             correct = 0
             incorrect = 0
