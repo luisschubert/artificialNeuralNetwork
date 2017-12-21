@@ -4,6 +4,7 @@
 import numpy
 from math import sqrt
 import time
+import pickle #PYTHON 3
 class NonMatchingLayersAndNodeNumbers(Exception):
     pass
 
@@ -106,10 +107,71 @@ class artificialNeuralNetwork:
             mnistTest.close()
             pass
 
+    def CIFAR10train(self):
+        for i in range(5):
+            batch = self.unpickleCIFARBatchfile('/Users/luisschubert/Documents/cifar-10-batches-py/data_batch_'+str(i+1))
+            print(batch[b'batch_label'])
+            imageNum = 0
+            for imageData in batch[b'data']:
+                inputVector = numpy.array(imageData).astype(numpy.float)
+                # scale the input vector to be values between (0,1]
+                inputVector = inputVector / 255 * 0.99 + 0.01
+                layers = self.threeLayerForwardPropagate(inputVector)
+                self.threeLayerBackwardPropagate(batch[b'labels'][imageNum], layers)
+                print(imageNum)
+                imageNum = imageNum + 1
+            pass
+
+    def CIFAR10query(self):
+        batch = self.unpickleCIFARBatchfile('/Users/luisschubert/Documents/cifar-10-batches-py/test_batch')
+        imageCount = 0
+        incorrect = 0
+        correct = 0
+        for imageData in batch[b'data']:
+            inputVector = numpy.array(imageData).astype(numpy.float)
+            # scale the input vector to be values between (0,1]
+            inputVector = inputVector / 255 * 0.99 + 0.01
+            classNumber = batch[b'labels'][imageCount]
+            '''
+            Feed the Network
+            '''
+            layers = self.threeLayerForwardPropagate(inputVector)
+
+            '''
+            Interpret Output
+            '''
+            recognizedClass = numpy.argmax(layers['sigOutputNodes'])
+
+            '''
+            Error Calculation
+            '''
+            if recognizedClass == classNumber:
+                correct = correct + 1
+            else:
+                incorrect = incorrect + 1
+                # '''
+                # Error Reporting
+                # '''
+                # print("I should be seeing a %s" % str(classNumber))
+                # print("I think I'm seeing a %s" % str(recognizedClass))
+                # print(layers['sigOutputNodes'])
+                # print("------------------------\n")
+            imageCount = imageCount + 1
+        '''
+        Diagnostics:
+        '''
+        print('successRate: %.3f' % ((float(correct) / float(imageCount)) * 100))
+        print('failureRate: %.3f' % ((float(incorrect) / float(imageCount)) * 100))
+        pass
 
     '''
-    HELPER FUNCTIONS 
+    HELPER FUNCTIONS
     '''
+    def unpickleCIFARBatchfile(self, file):
+        with open(file, 'rb') as fo:
+            dict = pickle.load(fo, encoding='bytes')
+        fo.close()
+        return dict
 
     # This is currently hardcoded for just 1 hidden layer.
     # Todo: Fix this and implement the general case of N-Hidden Layers
@@ -140,8 +202,8 @@ class artificialNeuralNetwork:
         expectedVector = numpy.zeros((10))
         expectedVector[digit] = 1
         expectedVector = expectedVector * 0.99 + 0.01
-        
-        
+
+
         '''
         Update Weights for (hidden)-OutputMatrix
         '''
@@ -156,7 +218,7 @@ class artificialNeuralNetwork:
         )
         self.weightMatrices[1] = self.weightMatrices[1] - deltaOutputWeightMatrix
 
-        
+
         '''
             Update Weights for (input)-HiddenMatrix
         '''
